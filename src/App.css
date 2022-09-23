@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forum {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 50px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.form-fields-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input, input:focus , textarea {
+    padding: 5px;
+    border-radius: 5px;
+    outline:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#submitButton {
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border: none;
+    background-color: rgb(212, 255, 146);
+    cursor: pointer;
+    transition: ease-in-out 60ms;
+}
+
+#submitButton:active {
+    transform: scale(0.95);
+}
