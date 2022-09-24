@@ -1,10 +1,14 @@
-const Education = () => {
+const Education = (props) => {
+  const handleChange = (e) => {
+    props.onChange(e, 'education');
+  };
+
   return (
     <div className="form-container">
       <div className="title-container">
         <h1>Education</h1>
       </div>
-      <div className="form-fields-container">
+      <div className="form-fields-container" onChange={handleChange}>
         <label htmlFor="school">School Name</label>
         <input type="text" id="school" />
         <label htmlFor="schoolTitle">Title of Study</label>
