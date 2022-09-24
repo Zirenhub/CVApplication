@@ -1,9 +1,9 @@
 import React from 'react';
-// import { useState } from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo';
 import Experience from './components/Experience';
 import Education from './components/Education';
+import Preview from './components/Preview';
 
 class App extends React.Component {
   constructor() {
@@ -72,10 +72,22 @@ class App extends React.Component {
     return (
       <div className="main-container">
         <form onSubmit={this.onSubmitForm} className="forum">
-          <PersonalInfo onChange={this.handleChange} />
-          <Experience onChange={this.handleChange} />
-          <Education onChange={this.handleChange} />
+          <div>
+            <Education onChange={this.handleChange} />
+            <Experience onChange={this.handleChange} />
+          </div>
+          <div>
+            <PersonalInfo onChange={this.handleChange} />
+            <div className="submit-button">
+              <button type="submit" id="submitButton">
+                Submit form
+              </button>
+            </div>
+          </div>
         </form>
+        <div>
+          <Preview />
+        </div>
       </div>
     );
   }

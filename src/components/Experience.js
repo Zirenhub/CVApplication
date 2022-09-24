@@ -22,11 +22,6 @@ const Experience = (props) => {
         <label htmlFor="to">To</label>
         <input type="text" id="to" />
       </div>
-      <div className="submit-button">
-        <button type="submit" id="submitButton">
-          Submit form
-        </button>
-      </div>
     </div>
   );
 };
