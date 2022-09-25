@@ -1,101 +1,90 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Preview from './components/Preview';
 
-class App extends React.Component {
-  constructor() {
-    super();
+const App = () => {
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: '',
+    lastName: '',
+    title: '',
+    address: '',
+    phoneNumber: '',
+    email: '',
+    description: '',
+  });
+  const [experience, setExperience] = useState({
+    position: '',
+    company: '',
+    mainTasks: '',
+    city: '',
+    from: '',
+    to: '',
+  });
+  const [education, setEducation] = useState({
+    school: '',
+    schoolTitle: '',
+    schoolCity: '',
+    degree: '',
+    schoolFrom: '',
+    schoolTo: '',
+  });
 
-    this.state = {
-      personalInfo: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        address: '',
-        phoneNumber: '',
-        email: '',
-        description: '',
-      },
-      experience: {
-        position: '',
-        company: '',
-        mainTasks: '',
-        city: '',
-        from: '',
-        to: '',
-      },
-      education: {
-        school: '',
-        schoolTitle: '',
-        schoolCity: '',
-        degree: '',
-        schoolFrom: '',
-        schoolTo: '',
-      },
-    };
-  }
-
-  onSubmitForm = (e) => {
+  const onSubmitForm = (e) => {
     e.preventDefault();
   };
 
-  handleChange = (e, component) => {
+  const handleChange = (e, component) => {
     const target = e.target.id;
     const value = e.target.value;
+    let updatedValue = { [target]: value };
 
     if (component === 'personalInfo') {
-      this.setState((prevState) => {
-        let personalInfo = Object.assign({}, prevState.personalInfo);
-        personalInfo[target] = value;
-        return { personalInfo };
-      });
+      setPersonalInfo((personalInfo) => ({
+        ...personalInfo,
+        ...updatedValue,
+      }));
     } else if (component === 'experience') {
-      this.setState((prevState) => {
-        let experience = Object.assign({}, prevState.experience);
-        experience[target] = value;
-        return { experience };
-      });
+      setExperience((experience) => ({
+        ...experience,
+        ...updatedValue,
+      }));
     } else {
-      this.setState((prevState) => {
-        let education = Object.assign({}, prevState.education);
-        education[target] = value;
-        return { education };
-      });
+      setEducation((education) => ({
+        ...education,
+        ...updatedValue,
+      }));
     }
   };
 
-  render() {
-    const { personalInfo, experience, education } = this.state;
-
-    return (
-      <div className="main-container">
-        <form onSubmit={this.onSubmitForm} className="forum">
-          <div>
-            <Education onChange={this.handleChange} />
-            <Experience onChange={this.handleChange} />
-          </div>
-          <div>
-            <PersonalInfo onChange={this.handleChange} />
-            <div className="submit-button">
-              <button type="submit" id="submitButton">
-                Submit form
-              </button>
-            </div>
-          </div>
-        </form>
+  return (
+    <div className="main-container">
+      <form onSubmit={onSubmitForm} className="forum">
         <div>
-          <Preview
-            personalInfo={personalInfo}
-            experience={experience}
-            education={education}
-          />
+          <Education onChange={handleChange} />
+          <Experience onChange={handleChange} />
         </div>
+        <div>
+          <PersonalInfo onChange={handleChange} />
+          <div className="submit-button">
+            <button type="submit" id="submitButton">
+              Submit form
+            </button>
+          </div>
+        </div>
+      </form>
+      <div>
+        <Preview
+          personalInfo={personalInfo}
+          experience={experience}
+          education={education}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
