@@ -15,7 +15,7 @@ class App extends React.Component {
         lastName: '',
         title: '',
         address: '',
-        phoneNumber: 0,
+        phoneNumber: '',
         email: '',
         description: '',
       },
@@ -40,7 +40,6 @@ class App extends React.Component {
 
   onSubmitForm = (e) => {
     e.preventDefault();
-    console.log(this.state);
   };
 
   handleChange = (e, component) => {
@@ -69,6 +68,8 @@ class App extends React.Component {
   };
 
   render() {
+    const { personalInfo, experience, education } = this.state;
+
     return (
       <div className="main-container">
         <form onSubmit={this.onSubmitForm} className="forum">
@@ -86,7 +87,11 @@ class App extends React.Component {
           </div>
         </form>
         <div>
-          <Preview />
+          <Preview
+            personalInfo={personalInfo}
+            experience={experience}
+            education={education}
+          />
         </div>
       </div>
     );

@@ -1,36 +1,39 @@
-const Preview = () => {
+const Preview = ({ personalInfo, experience, education }) => {
   return (
     <div className="cv-preview-container">
       <div className="name-container">
         <div className="first-last-container">
-          <p>Erdinch</p>
-          <p>Osman</p>
+          <p>{personalInfo.firstName}</p>
+          <p>{personalInfo.lastName}</p>
         </div>
         <div>
-          <p>Web developer</p>
+          <p>{personalInfo.title}</p>
         </div>
       </div>
       <div className="experience-education-container">
         <div className="description-container">
           <p className="bold-style">Description</p>
-          <p>falan filan</p>
+          <p>{personalInfo.description}</p>
         </div>
         <div>
           <p className="bold-style">Experience</p>
           <div className="edu-exp-container">
             <div>
               <div>
-                <p>2006&nbsp; - &nbsp;</p>
-                <p>2016</p>
+                <p>{experience.from}&nbsp; - &nbsp;</p>
+                <p>{experience.to}</p>
               </div>
             </div>
             <div className="edu-exp-details">
               <div>
-                <p>web developer</p>
+                <p>{experience.company}, &nbsp;</p>
+                <p>{experience.city}</p>
               </div>
               <div>
-                <p>google, &nbsp;</p>
-                <p>london</p>
+                <p>{experience.position}</p>
+              </div>
+              <div>
+                <p>Main Tasks: {experience.mainTasks}</p>
               </div>
             </div>
           </div>
@@ -40,18 +43,18 @@ const Preview = () => {
           <div className="edu-exp-container">
             <div>
               <div>
-                <p>2006&nbsp; - &nbsp;</p>
-                <p>2016</p>
+                <p>{education.schoolFrom}&nbsp; - &nbsp;</p>
+                <p>{education.schoolTo}</p>
               </div>
             </div>
             <div className="edu-exp-details">
               <div>
-                <p>hayat okulu aga, &nbsp;</p>
-                <p>kuklen</p>
+                <p>{education.school}, &nbsp;</p>
+                <p>{education.schoolCity}</p>
               </div>
               <div>
-                <p>Degree: hayat diplomasi</p>
-                <p>Subject: sokak felsefesi</p>
+                <p>Degree: {education.degree}</p>
+                <p>Title of Study: {education.schoolTitle}</p>
               </div>
             </div>
           </div>
@@ -63,12 +66,15 @@ const Preview = () => {
         </div>
         <div>
           <p>Address</p>
+          <p>{personalInfo.address}</p>
         </div>
         <div>
           <p>Phone Number</p>
+          <p>{personalInfo.phoneNumber}</p>
         </div>
         <div>
           <p>Email</p>
+          <p>{personalInfo.email}</p>
         </div>
       </div>
     </div>

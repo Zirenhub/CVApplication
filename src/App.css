@@ -157,9 +157,12 @@ textarea {
     align-items: center;
 }
 
-.personal-details-container div:first-of-type {
+.personal-details-container div {
     color : rgb(20, 62, 114);
     font-style: italic;
     font-weight: bold;
     border-bottom: 1px solid rgba(20, 62, 114, 0.3);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
